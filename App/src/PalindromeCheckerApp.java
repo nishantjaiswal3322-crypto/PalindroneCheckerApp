@@ -1,45 +1,55 @@
 /**
  * ============================================================
- * MAIN CLASS - UseCase3PalindromeCheckerApp
+ * MAIN CLASS - UseCase4PalindromeCheckerApp
  * ============================================================
  *
- * Use Case 3: Reverse String Based Palindrome Check
+ * Use Case 4: Character Array Based Validation
  *
  * Description:
- * This class checks whether a string is a palindrome
- * by reversing the string and comparing it with
- * the original value.
+ * This class validates a palindrome by converting
+ * the string into a character array and comparing
+ * characters using the two-pointer technique.
  *
  * @author Nishant jaiswal
- * @version 3.0
+ * @version 4.0
  */
 
 public class PalindromeCheckerApp {
 
 
     /**
-     * Application entry point for UC3.
+     * Application entry point for UC4.
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
 
 
-        String input = "madam";
-        String reversed = "";
+        // Declare and initialize the input string
+        String input = "radar";
 
-        // Iterate from the last character to the first
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed = reversed + input.charAt(i);
+        // Convert string into character array
+        char[] chars = input.toCharArray();
+
+        // Initialize pointers
+        int start = 0;
+        int end = chars.length - 1;
+
+        // Assume palindrome initially
+        boolean isPalindrome = true;
+
+        // Compare characters using two-pointer technique
+        while (start < end) {
+
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
         }
 
-        System.out.println("Original String : " + input);
-        System.out.println("Reversed String : " + reversed);
-
-        // Compare original and reversed string
-        if (input.equals(reversed)) {
-            System.out.println("Is it a Palindrome? : true");
-        } else {
-            System.out.println("Is it a Palindrome? : false");
-        }
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
